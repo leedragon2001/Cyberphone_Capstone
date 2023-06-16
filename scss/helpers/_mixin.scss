@@ -1,0 +1,5 @@
+@mixin nav($flex){
+    display: flex;
+    justify-content: $flex;
+    width: 100%;
+}
