@@ -43,84 +43,80 @@ const getInforPhone = () => {
   let desc = getEle("description").value;
   let type = getEle("brand").value;
 
-  let isValid = true;
+  // let isValid = true;
 
-  isValid &=
-    validate.kiemTraRong(phoneName, "tbPN", "(*) Vui lòng nhập tên") &&
-    validate.kiemTraDoDaiKiTu(
-      phoneName,
-      "tbPN",
-      "(*) Vui lòng nhập 2-10 kí tự",
-      2,
-      10
-    ) &&
-    validate.kiemTraChuoiKiTu(
-      phoneName,
-      "tbPN",
-      "(*) Vui lòng nhập đúng kí tự"
-    );
+  // isValid &=
+  //   validate.kiemTraRong(name, "tbPN", "(*) Vui lòng nhập tên") &&
+  //   validate.kiemTraDoDaiKiTu(
+  //     name,
+  //     "tbPN",
+  //     "(*) Vui lòng nhập 2-10 kí tự",
+  //     2,
+  //     10
+  //   ) &&
+  //   validate.kiemTraChuoiKiTu(name, "tbPN", "(*) Vui lòng nhập đúng kí tự");
 
-  isValid &= validate.kiemTraRong(price, "tbPN", "(*) Vui lòng nhập giá");
+  // isValid &= validate.kiemTraRong(price, "tbPN", "(*) Vui lòng nhập giá");
 
-  isValid &=
-    validate.kiemTraRong(screen, "tbScreen", "(*) Vui lòng nhập màn hình") &&
-    validate.kiemTraDoDaiKiTu(
-      screen,
-      "tbScreen",
-      "(*) Vui lòng nhập 2-10 kí tự",
-      2,
-      10
-    );
+  // isValid &=
+  //   validate.kiemTraRong(screen, "tbScreen", "(*) Vui lòng nhập màn hình") &&
+  //   validate.kiemTraDoDaiKiTu(
+  //     screen,
+  //     "tbScreen",
+  //     "(*) Vui lòng nhập 2-10 kí tự",
+  //     2,
+  //     10
+  //   );
 
-  isValid &=
-    validate.kiemTraRong(backCamera, "tbBC", "(*) Vui lòng nhập camera sau") &&
-    validate.kiemTraDoDaiKiTu(
-      backCamera,
-      "tbBC",
-      "(*) Vui lòng nhập 2-10 kí tự",
-      2,
-      10
-    );
+  // isValid &=
+  //   validate.kiemTraRong(backCamera, "tbBC", "(*) Vui lòng nhập camera sau") &&
+  //   validate.kiemTraDoDaiKiTu(
+  //     backCamera,
+  //     "tbBC",
+  //     "(*) Vui lòng nhập 2-10 kí tự",
+  //     2,
+  //     10
+  //   );
 
-  isValid &=
-    validate.kiemTraRong(
-      frontCamera,
-      "tbFC",
-      "(*) Vui lòng nhập camera trước"
-    ) &&
-    validate.kiemTraDoDaiKiTu(
-      frontCamera,
-      "tbFC",
-      "(*) Vui lòng nhập 2-10 kí tự",
-      2,
-      10
-    );
+  // isValid &=
+  //   validate.kiemTraRong(
+  //     frontCamera,
+  //     "tbFC",
+  //     "(*) Vui lòng nhập camera trước"
+  //   ) &&
+  //   validate.kiemTraDoDaiKiTu(
+  //     frontCamera,
+  //     "tbFC",
+  //     "(*) Vui lòng nhập 2-10 kí tự",
+  //     2,
+  //     10
+  //   );
 
-  isValid &=
-    validate.kiemTraRong(img, "tbIL", "(*) Vui lòng nhập màn hình") &&
-    validate.kiemTraDoDaiKiTu(
-      screen,
-      "tbScreen",
-      "(*) Vui lòng nhập 2-10 kí tự",
-      2,
-      10
-    );
+  // isValid &=
+  //   validate.kiemTraRong(img, "tbIL", "(*) Vui lòng nhập màn hình") &&
+  //   validate.kiemTraDoDaiKiTu(
+  //     screen,
+  //     "tbScreen",
+  //     "(*) Vui lòng nhập 2-10 kí tự",
+  //     2,
+  //     10
+  //   );
 
-  isValid &=
-    validate.kiemTraRong(desc, "tbDescription", "(*) Vui lòng nhập mô tả") &&
-    validate.kiemTraDoDaiKiTu(
-      screen,
-      "tbScreen",
-      "(*) Vui lòng nhập 2-10 kí tự",
-      2,
-      10
-    );
+  // isValid &=
+  //   validate.kiemTraRong(desc, "tbDescription", "(*) Vui lòng nhập mô tả") &&
+  //   validate.kiemTraDoDaiKiTu(
+  //     screen,
+  //     "tbScreen",
+  //     "(*) Vui lòng nhập 2-10 kí tự",
+  //     2,
+  //     10
+  //   );
 
-  isValid &= validate.kiemTraLoai(brand, "tbBrand", "(*) Vui lòng chọn loại");
+  // isValid &= validate.kiemTraLoai(brand, "tbBrand", "(*) Vui lòng chọn loại");
 
-  if (!isValid) {
-    return null;
-  }
+  // if (!isValid) {
+  //   return null;
+  // }
   const phone = new Phone(
     "",
     name,
@@ -137,7 +133,7 @@ const getInforPhone = () => {
 
 const getListPhone = () => {
   api
-    .callApi("phonestore", "get", null)
+    .callApi("PhoneStore", "get", null)
     .then((result) => renderUI(result))
     .catch((err) => console.log(err));
 };
@@ -146,7 +142,7 @@ getListPhone();
 const addPhone = () => {
   let phone = getInforPhone();
   api
-    .callApi("phonestore", "post", phone)
+    .callApi("PhoneStore", "post", phone)
     .then(() => {
       getListPhone();
       CustomModal.alertSuccess("Add phone successfully");
@@ -159,7 +155,7 @@ const editPhone = (id) => {
   getEle("btnAddPhone").style.display = "none";
   getEle("btnUpdate").style.display = "block";
   api
-    .callApi(`phonestore/${id}`, "get", null)
+    .callApi(`PhoneStore/${id}`, "get", null)
     .then((phone) => {
       getEle("phoneName").value = phone.name;
       getEle("price").value = phone.price;
@@ -175,7 +171,7 @@ const editPhone = (id) => {
 window.editPhone = editPhone;
 
 const removePhone = async (id) => {
-  const result = await api.callApi(`phonestore/${id}`, "delete", null);
+  const result = await api.callApi(`PhoneStore/${id}`, "delete", null);
   let res = await CustomModal.alertDelete(
     `This phone will be deleted, you can't undo this action`
   );
@@ -200,7 +196,7 @@ getEle("btnAdd").onclick = function () {
 getEle("btnUpdate").onclick = function () {
   const phone = getInforPhone();
   api
-    .callApi(`phonestore/${phoneUpdateId}`, "put", phone)
+    .callApi(`PhoneStore/${phoneUpdateId}`, "put", phone)
     .then(() => {
       getListPhone();
       CustomModal.alertSuccess("Add phone successfully");
@@ -211,7 +207,7 @@ getEle("btnUpdate").onclick = function () {
 
 const searchPhoneByName = async (phoneName) => {
   try {
-    const phones = await api.callApi(`phonestore`, "get", null);
+    const phones = await api.callApi(`PhoneStore`, "get", null);
     const filterPhones = phones.filter((phone) =>
       phone.name.toLowerCase().includes(phoneName.toLowerCase())
     );
@@ -242,7 +238,7 @@ getEle("default").addEventListener("click", async () => {
   getEle("sortUp").style.display = "inline-block";
   getEle("sortDown").style.display = "none";
   try {
-    const result = await api.callApi("phonestore", "get", null);
+    const result = await api.callApi("PhoneStore", "get", null);
     const sortUp = result.sort((a, b) => b.price - a.price);
     renderUI(sortUp);
   } catch (err) {
@@ -255,7 +251,7 @@ getEle("sortUp").addEventListener("click", async () => {
   getEle("sortUp").style.display = "none";
   getEle("sortDown").style.display = "inline-block";
   try {
-    const result = await api.callApi("phonestore", "get", null);
+    const result = await api.callApi("PhoneStore", "get", null);
     const sortUp = result.sort((a, b) => a.price - b.price);
     renderUI(sortUp);
   } catch (err) {

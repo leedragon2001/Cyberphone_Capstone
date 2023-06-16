@@ -1,45 +1,31 @@
 #modal__form {
-  width: 450px;
-  min-height: 500px;
+  width: $modal-width;
+  min-height: $modal-min-height;
   height: auto;
-  border-radius: 5px;
-  margin: 2% auto;
-  box-shadow: 0 9px 50px hsla(216, 83%, 68%, 0.31);
-  padding: 2%;
-  background-image: linear-gradient(250deg, #e3ecfd, #fff0e8);
+  border-radius: $modal-border-radius;
+  margin: $modal-margin;
+  box-shadow: $modal-box-shadow;
+  padding: $modal-padding;
+  background-image: $modal-background;
+  @include modal-style;
 }
+
 header h3 {
   padding-top: 15px;
   text-align: center;
-  font-size: 210%;
+  font-size: $heading-font-size;
   font-family: "Playfair Display", serif;
-  color: #3e403f;
-}
-header p {
-  letter-spacing: 0.05em;
-}
-.submits {
-  width: 48%;
-  display: inline-block;
-  float: left;
-  margin-left: 2%;
-}
-.frgt-pass {
-  background: transparent;
-}
-.sign-up {
-  background: #b8f2e6;
+  color: $heading-color;
 }
 
 .form-group {
-  padding: 5px 0;
+  padding: $form-group-padding;
 }
 
 .sp-thongbao {
-  color: red;
-  margin-left: 40px;
+  color: $sp-thongbao-color;
 }
 
 .input-group-text {
-  padding: 0.7rem 0.75rem;
+  padding: $input-group-text-padding;
 }
