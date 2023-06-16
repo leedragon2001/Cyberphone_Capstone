@@ -43,80 +43,71 @@ const getInforPhone = () => {
   let desc = getEle("description").value;
   let type = getEle("brand").value;
 
-  // let isValid = true;
+  let isValid = true;
 
-  // isValid &=
-  //   validate.kiemTraRong(name, "tbPN", "(*) Vui lòng nhập tên") &&
-  //   validate.kiemTraDoDaiKiTu(
-  //     name,
-  //     "tbPN",
-  //     "(*) Vui lòng nhập 2-10 kí tự",
-  //     2,
-  //     10
-  //   ) &&
-  //   validate.kiemTraChuoiKiTu(name, "tbPN", "(*) Vui lòng nhập đúng kí tự");
+  isValid &=
+    validate.kiemTraRong(name, "tbPN", "(*) Vui lòng nhập tên") &&
+    validate.kiemTraDoDaiKiTu(
+      name,
+      "tbPN",
+      "(*) Vui lòng nhập 2-10 kí tự",
+      2,
+      10
+    );
 
-  // isValid &= validate.kiemTraRong(price, "tbPN", "(*) Vui lòng nhập giá");
+  isValid &= validate.kiemTraRong(price, "tbPrice", "(*) Vui lòng nhập giá");
 
-  // isValid &=
-  //   validate.kiemTraRong(screen, "tbScreen", "(*) Vui lòng nhập màn hình") &&
-  //   validate.kiemTraDoDaiKiTu(
-  //     screen,
-  //     "tbScreen",
-  //     "(*) Vui lòng nhập 2-10 kí tự",
-  //     2,
-  //     10
-  //   );
+  isValid &=
+    validate.kiemTraRong(screen, "tbScreen", "(*) Vui lòng nhập màn hình") &&
+    validate.kiemTraDoDaiKiTu(
+      screen,
+      "tbScreen",
+      "(*) Vui lòng nhập 2-10 kí tự",
+      2,
+      10
+    );
 
-  // isValid &=
-  //   validate.kiemTraRong(backCamera, "tbBC", "(*) Vui lòng nhập camera sau") &&
-  //   validate.kiemTraDoDaiKiTu(
-  //     backCamera,
-  //     "tbBC",
-  //     "(*) Vui lòng nhập 2-10 kí tự",
-  //     2,
-  //     10
-  //   );
+  isValid &=
+    validate.kiemTraRong(backCamera, "tbBC", "(*) Vui lòng nhập camera sau") &&
+    validate.kiemTraDoDaiKiTu(
+      backCamera,
+      "tbBC",
+      "(*) Vui lòng nhập 2-10 kí tự",
+      2,
+      10
+    );
 
-  // isValid &=
-  //   validate.kiemTraRong(
-  //     frontCamera,
-  //     "tbFC",
-  //     "(*) Vui lòng nhập camera trước"
-  //   ) &&
-  //   validate.kiemTraDoDaiKiTu(
-  //     frontCamera,
-  //     "tbFC",
-  //     "(*) Vui lòng nhập 2-10 kí tự",
-  //     2,
-  //     10
-  //   );
+  isValid &=
+    validate.kiemTraRong(
+      frontCamera,
+      "tbFC",
+      "(*) Vui lòng nhập camera trước"
+    ) &&
+    validate.kiemTraDoDaiKiTu(
+      frontCamera,
+      "tbFC",
+      "(*) Vui lòng nhập 2-10 kí tự",
+      2,
+      10
+    );
 
-  // isValid &=
-  //   validate.kiemTraRong(img, "tbIL", "(*) Vui lòng nhập màn hình") &&
-  //   validate.kiemTraDoDaiKiTu(
-  //     screen,
-  //     "tbScreen",
-  //     "(*) Vui lòng nhập 2-10 kí tự",
-  //     2,
-  //     10
-  //   );
+  isValid &= validate.kiemTraRong(img, "tbIL", "(*) Vui lòng nhập hình");
+  isValid &=
+    validate.kiemTraRong(desc, "tbDescription", "(*) Vui lòng nhập mô tả") &&
+    validate.kiemTraDoDaiKiTu(
+      desc,
+      "tbDescription",
+      "(*) Vui lòng nhập 2-1000 kí tự",
+      2,
+      1000
+    );
 
-  // isValid &=
-  //   validate.kiemTraRong(desc, "tbDescription", "(*) Vui lòng nhập mô tả") &&
-  //   validate.kiemTraDoDaiKiTu(
-  //     screen,
-  //     "tbScreen",
-  //     "(*) Vui lòng nhập 2-10 kí tự",
-  //     2,
-  //     10
-  //   );
+  isValid &= validate.kiemTraLoai("brand", "tbBrand", "(*) Vui lòng chọn loại");
 
-  // isValid &= validate.kiemTraLoai(brand, "tbBrand", "(*) Vui lòng chọn loại");
+  if (!isValid) {
+    return null;
+  }
 
-  // if (!isValid) {
-  //   return null;
-  // }
   const phone = new Phone(
     "",
     name,
@@ -141,6 +132,8 @@ getListPhone();
 
 const addPhone = () => {
   let phone = getInforPhone();
+  if (!phone) return;
+
   api
     .callApi("PhoneStore", "post", phone)
     .then(() => {
