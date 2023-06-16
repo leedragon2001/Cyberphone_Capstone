@@ -50,7 +50,7 @@ const getInforPhone = () => {
     validate.kiemTraDoDaiKiTu(
       name,
       "tbPN",
-      "(*) Vui lòng nhập 2-10 kí tự",
+      "(*) Vui lòng nhập 2-50 kí tự",
       2,
       10
     );
@@ -72,7 +72,7 @@ const getInforPhone = () => {
     validate.kiemTraDoDaiKiTu(
       backCamera,
       "tbBC",
-      "(*) Vui lòng nhập 2-10 kí tự",
+      "(*) Vui lòng nhập 2-30 kí tự",
       2,
       10
     );
@@ -86,7 +86,7 @@ const getInforPhone = () => {
     validate.kiemTraDoDaiKiTu(
       frontCamera,
       "tbFC",
-      "(*) Vui lòng nhập 2-10 kí tự",
+      "(*) Vui lòng nhập 2-30 kí tự",
       2,
       10
     );
