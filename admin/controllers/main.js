@@ -192,7 +192,7 @@ getEle("btnUpdate").onclick = function () {
     .callApi(`PhoneStore/${phoneUpdateId}`, "put", phone)
     .then(() => {
       getListPhone();
-      CustomModal.alertSuccess("Add phone successfully");
+      CustomModal.alertSuccess("Update phone successfully");
       document.getElementsByClassName("close")[0].click();
     })
     .catch((err) => console.log(err));
