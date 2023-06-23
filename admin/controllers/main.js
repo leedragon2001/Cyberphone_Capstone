@@ -188,6 +188,7 @@ getEle("btnAdd").onclick = function () {
 
 getEle("btnUpdate").onclick = function () {
   const phone = getInforPhone();
+  if (!phone) return;
   api
     .callApi(`PhoneStore/${phoneUpdateId}`, "put", phone)
     .then(() => {
